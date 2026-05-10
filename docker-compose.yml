@@ -1,0 +1,28 @@
+services:
+# CONTENEDOR 1: La Base de Datos (MariaDB)
+  db:
+    image: mariadb:10.6
+    container_name: mariadb_hogwarts_labp
+    restart: always
+    ports:
+      - "4306:3306" # Externo 4306 : Interno 3306
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: hogwarts_labp
+      MYSQL_USER: aaee_labp
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+
+# CONTENEDOR 2: Tu aplicación Spring Boot
+  app:
+# Asegúrate de que esta sea la imagen de tu repo: hogwarts_backend_991
+    image: ghcr.io/nxvzx/aaee_mapamundi_sb:latest
+    container_name: aaee_hogwarst_app_labp
+    restart: always
+    ports:
+      - "8080:8080" # El puerto que usa tu API
+    env_file:
+      - .env
+    depends_on:
+      - db # Esto asegura que la DB arranque antes que la App
