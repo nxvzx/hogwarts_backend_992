@@ -17,7 +17,7 @@ services:
 # CONTENEDOR 2: Tu aplicación Spring Boot
   app:
 # Asegúrate de que esta sea la imagen de tu repo: hogwarts_backend_991
-    image: ghcr.io/nxvzx/aaee_mapamundi_sb:latest
+    image: ghcr.io/nxvzx/hogwarts_backend_992:latest
     container_name: aaee_hogwarst_app_labp
     restart: always
     ports:
